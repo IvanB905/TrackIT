@@ -1,0 +1,29 @@
+/* CSS para el logo cuando el menú está oculto */
+.logo-hidden {
+    display: none;
+}
+
+.sidebar-collapsed .logo-hidden {
+    display: block;
+}
+
+.sidebar-collapsed .logo-visible {
+    display: none;
+}
+
+/* Ajustar el tamaño del segundo logo */
+.logo-hidden {
+    display: none;
+    width: 50px; /* Tamaño del logo oculto cuando el menú está colapsado */
+    height: auto; /* Mantiene la proporción del logo */
+}
+
+/* Mostrar el segundo logo cuando el menú está colapsado */
+.sidebar-collapsed .logo-hidden {
+    display: block;
+}
+
+.sidebar-collapsed .logo-visible {
+    display: none;
+}
+
