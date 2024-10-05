@@ -7,7 +7,7 @@ class Home extends Controller
     }
     public function index()
     {
-        $data['title'] = 'Pagina Principal';
-        $this->views->getView('home', "index", $data);
+        header('Location: ' . BASE_URL . 'admin');
+        exit();
     }
 }
