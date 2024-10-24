@@ -2,7 +2,7 @@
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#listaEquipo" type="button" role="tab" aria-controls="listaEquipo" aria-selected="true">Equipo de Computo</button>
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#listaEquipo" type="button" role="tab" aria-controls="listaEquipo" aria-selected="true">Impresoras</button>
     </li>
     <li class="nav-item" role="presentation">
         <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#nuevoEquipo" type="button" role="tab" aria-controls="nuevoEquipo" aria-selected="false">Nuevo</button>
@@ -24,12 +24,6 @@
                                 <th>Modelo</th>
                                 <th>Serial</th>
                                 <th>IP Asignada</th>
-                                <th>MAC_equipo</th>
-                                <th>Nombre_Equipo</th>
-                                <th>Sistema_Operativo</th>
-                                <th>Office_Licenciado</th>
-                                <th>Antivirus</th>
-                                <th>VPN</th>
                                 <th>Imagen</th>
                                 <th></th>
                             </tr>
@@ -111,42 +105,6 @@
                                 <input id="IP_Asignada" class="form-control" type="text" name="IP_Asignada" placeholder="IP Asignada">
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <div class="form-group mb-2">
-                                <label class="form-label" for="MAC_Equipo">Mac Equipo</label>
-                                <input id="MAC_Equipo" class="form-control" type="text" name="MAC_Equipo" placeholder="Mac Equipo">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group mb-2">
-                                <label class="form-label" for="Nombre_Equipo">Nombre Equipo</label>
-                                <input id="Nombre_Equipo" class="form-control" type="text" name="Nombre_Equipo" placeholder="Nombre Equipo">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group mb-2">
-                                <label class="form-label" for="Sistema_Operativo">Sistema Operativo</label>
-                                <input id="Sistema_Operativo" class="form-control" type="text" name="Sistema_Operativo" placeholder="Sistema Operativo">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group mb-2">
-                                <label class="form-label" for="Office_Licenciado">Office Licenciado</label>
-                                <input id="Office_Licenciado" class="form-control" type="text" name="Office_Licenciado" placeholder="Office Licenciado">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group mb-2">
-                                <label class="form-label" for="Antivirus">Antivirus</label>
-                                <input id="Antivirus" class="form-control" type="text" name="Antivirus" placeholder="Antivirus">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group mb-2">
-                                <label class="form-label" for="VPN">VPN</label>
-                                <input id="VPN" class="form-control" type="text" name="VPN" placeholder="VPN">
-                            </div>
-                        </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
                                 <label for="imagen">Imagen (Opcional)</label>
@@ -172,8 +130,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?php echo BASE_URL . 'equipodecomputo/galeriaImagenes'; ?>" class="dropzone">
-                    <input type="hidden" id="idequipodecomputo" name="idequipodecomputo">
+                <form action="<?php echo BASE_URL . 'impresora/galeriaImagenes'; ?>" class="dropzone">
+                    <input type="hidden" id="idimpresora" name="idimpresora">
                 </form>
                 <div class="text-end mt-3">
                     <button class="btn btn-primary" type="button" id="btnProcesar">Subir Imagenes</button>
@@ -194,7 +152,7 @@
 
 <?php include_once 'Views/template/footer-admin.php'; ?>
 
-<script src="<?php echo BASE_URL . 'assets/js/modulos/equipodecomputo.js'; ?>"></script>
+<script src="<?php echo BASE_URL . 'assets/js/modulos/impresora.js'; ?>"></script>
 
 </body>
 

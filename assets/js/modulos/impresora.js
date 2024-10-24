@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     tblEquipos = $("#tblEquipos").DataTable({
         ajax: {
-            url: base_url + "equipodecomputo/listar",
+            url: base_url + "impresora/listar",
             dataSrc: "",
         },
         columns: [
@@ -30,12 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
             { data: "Modelo" },
             { data: "Serial" },
             { data: "IP_Asignada" },
-            { data: "MAC_Equipo" },
-            { data: "Nombre_Equipo" },
-            { data: "Sistema_Operativo" },
-            { data: "Office_Licenciado" },
-            { data: "Antivirus" },
-            { data: "VPN" },
             { data: "imagen" },
             { data: "accion" },
         ],
@@ -51,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function obtenerNuevoCodigo() {
         // Solo obtener nuevo código si no hay un ID definido (registro nuevo)
         if (!document.querySelector("#id").value) {
-            const url = base_url + "equipodecomputo/obtenerNuevoCodigo";
+            const url = base_url + "impresora/obtenerNuevoCodigo";
             const http = new XMLHttpRequest();
             http.open("GET", url, true);
             http.send();
@@ -72,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     frm.addEventListener("submit", function (e) {
         e.preventDefault();
         let data = new FormData(this);
-        const url = base_url + "equipodecomputo/registrar";
+        const url = base_url + "impresora/registrar";
         const http = new XMLHttpRequest();
         http.open("POST", url, true);
         http.send(data);
@@ -138,7 +132,7 @@ function eliminarEqu(idEqu) {
         confirmButtonText: "Sí, Eliminar!",
     }).then((result) => {
         if (result.isConfirmed) {
-            const url = base_url + "equipodecomputo/delete/" + idEqu;
+            const url = base_url + "impresora/delete/" + idEqu;
             const http = new XMLHttpRequest();
             http.open("GET", url, true);
             http.send();
@@ -159,7 +153,7 @@ function eliminarEqu(idEqu) {
 }
 
 function editEqu(idEqu) {
-    const url = base_url + "equipodecomputo/edit/" + idEqu;
+    const url = base_url + "impresora/edit/" + idEqu;
     const http = new XMLHttpRequest();
     http.open("GET", url, true);
     http.send();
@@ -175,12 +169,6 @@ function editEqu(idEqu) {
             document.querySelector("#Modelo").value = res.Modelo;
             document.querySelector("#Serial").value = res.Serial;
             document.querySelector("#IP_Asignada").value = res.IP_Asignada;
-            document.querySelector("#MAC_Equipo").value = res.MAC_Equipo;
-            document.querySelector("#Nombre_Equipo").value = res.Nombre_Equipo;
-            document.querySelector("#Sistema_Operativo").value = res.Sistema_Operativo;
-            document.querySelector("#Office_Licenciado").value = res.Office_Licenciado;
-            document.querySelector("#Antivirus").value = res.Antivirus;
-            document.querySelector("#VPN").value = res.VPN;
             document.querySelector("#imagen_actual").value = res.imagen;
             btnAccion.textContent = "Actualizar";
             firstTab.show();
@@ -189,16 +177,16 @@ function editEqu(idEqu) {
 }
 
 function agregarImagenes(idEqu) {
-    const url = base_url + "equipodecomputo/verGaleria/" + idEqu;
+    const url = base_url + "impresora/verGaleria/" + idEqu;
     const http = new XMLHttpRequest();
     http.open("GET", url, true);
     http.send();
     http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             const res = JSON.parse(this.responseText);
-            document.querySelector("#idequipodecomputo").value = idEqu;
+            document.querySelector("#idimpresora").value = idEqu;
             let html = '';
-            let destino = base_url + 'assets/images/equipodecomputo/' + idEqu + '/';
+            let destino = base_url + 'assets/images/impresora/' + idEqu + '/';
             for (let i = 0; i < res.length; i++) {
                 html += `<div class="col-md-3">
                     <img class="img-thumbnail" src="${destino + res[i]}">
@@ -226,7 +214,7 @@ function eliminarImagen() {
 }
 
 function eliminar(idEqu, nombre) {
-    const url = base_url + "equipodecomputo/eliminarImg";
+    const url = base_url + "impresora/eliminarImg";
     const http = new XMLHttpRequest();
     http.open("POST", url, true);
     http.send(JSON.stringify({

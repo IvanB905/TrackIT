@@ -24,7 +24,8 @@
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/header-colors.css" />
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'assets/DataTables/datatables.min.css'; ?>">
-    <link rel="stylesheet" href="assets/css/estilos.css" />
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/dropzone.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/estilos.css" />
     <title><?php echo TITLE . ' - ' . $data['title']; ?></title>
 </head>
 
@@ -76,7 +77,7 @@
                     <ul>
                         <li> <a href="<?php echo BASE_URL . 'equipodecomputo'; ?>"><i class="bx bx-right-arrow-alt"></i>Equipo de computo</a>
                         </li>
-                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Impresora</a>
+                        <li> <a href="<?php echo BASE_URL . 'impresora'; ?>"><i class="bx bx-right-arrow-alt"></i>Impresora</a>
                         </li>
                         <li> <a href="ecommerce-products.html"><i class="bx bx-right-arrow-alt"></i>Etiquetadora</a>
                         </li>

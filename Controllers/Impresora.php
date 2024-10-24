@@ -1,5 +1,5 @@
 <?php
-class Equipodecomputo extends Controller
+class Impresora extends Controller
 {
     public function __construct()
     {
@@ -13,16 +13,16 @@ class Equipodecomputo extends Controller
 
     public function index()
     {
-        $data['title'] = 'Equipos de Computo';
+        $data['title'] = 'Impresora';
         $data['categorias'] = $this->model->getCategorias();
         $data['sedes'] = $this->model->getSedes();
         $data['areas'] = $this->model->getAreas();
-        $this->views->getView('admin/equipodecomputo', "index", $data);
+        $this->views->getView('admin/impresora', "index", $data);
     }
 
     public function listar()
     {
-        $data = $this->model->getEquipodecomputos(1);
+        $data = $this->model->getImpresoras(1);
         for ($i = 0; $i < count($data); $i++) {
             $data[$i]['imagen'] = '<img class="img-thumbnail" src="' . $data[$i]['imagen'] . '" alt="' . $data[$i]['Tipo_Equipo'] . '" width="50">';
             $data[$i]['accion'] = '<div class="d-flex">
@@ -41,11 +41,11 @@ class Equipodecomputo extends Controller
         if ($ultimoCodigo) {
             // Extraer el número después de "C" y generar el siguiente código
             $numero = intval(substr($ultimoCodigo['Codigo_Inventario'], 1)) + 1;
-            $nuevoCodigo = "C" . str_pad($numero, 4, "0", STR_PAD_LEFT);
+            $nuevoCodigo = "I" . str_pad($numero, 4, "0", STR_PAD_LEFT);
             echo json_encode(array('icono' => 'success', 'codigo' => $nuevoCodigo));
         } else {
-            // Si no hay códigos previos, comenzamos con C0001
-            echo json_encode(array('icono' => 'success', 'codigo' => 'C0001'));
+            // Si no hay códigos previos, comenzamos con I0001
+            echo json_encode(array('icono' => 'success', 'codigo' => 'I0001'));
         }
         die();
     }
@@ -64,18 +64,12 @@ class Equipodecomputo extends Controller
             $Modelo = $_POST['Modelo'];
             $Serial = $_POST['Serial'];
             $IP_Asignada = $_POST['IP_Asignada'];
-            $MAC_Equipo = $_POST['MAC_Equipo'];
-            $Nombre_Equipo = $_POST['Nombre_Equipo'];
-            $Sistema_Operativo = $_POST['Sistema_Operativo'];
-            $Office_Licenciado = $_POST['Office_Licenciado'];
-            $Antivirus = $_POST['Antivirus'];
-            $VPN = $_POST['VPN'];
             $imagen = $_FILES['imagen'];
             $tmp_name = $imagen['tmp_name'];
             $id = $_POST['id'] ?? null;  // Asegurar que $id esté definido, incluso si no es enviado
 
             // Ruta para almacenar imágenes
-            $ruta = 'assets/images/equipodecomputo/';
+            $ruta = 'assets/images/impresora/';
             $nombreImg = date('YmdHis'); // Generar nombre único basado en la fecha
 
             // Validación de campos requeridos
@@ -102,12 +96,6 @@ class Equipodecomputo extends Controller
                         $Modelo,
                         $Serial,
                         $IP_Asignada,
-                        $MAC_Equipo,
-                        $Nombre_Equipo,
-                        $Sistema_Operativo,
-                        $Office_Licenciado,
-                        $Antivirus,
-                        $VPN,
                         $destino
                     );
 
@@ -129,12 +117,6 @@ class Equipodecomputo extends Controller
                         $Modelo,
                         $Serial,
                         $IP_Asignada,
-                        $MAC_Equipo,
-                        $Nombre_Equipo,
-                        $Sistema_Operativo,
-                        $Office_Licenciado,
-                        $Antivirus,
-                        $VPN,
                         $destino,
                         $id
                     );
@@ -178,7 +160,7 @@ class Equipodecomputo extends Controller
     public function edit($idEqu)
     {
         if (is_numeric($idEqu)) {
-            $data = $this->model->getEquipodecomputo($idEqu);
+            $data = $this->model->getImpresora($idEqu);
             echo json_encode($data, JSON_UNESCAPED_UNICODE);
         }
         die();
@@ -187,8 +169,8 @@ class Equipodecomputo extends Controller
     // Galería de imágenes
     public function galeriaImagenes()
     {
-        $id = $_POST['idequipodecomputo'];
-        $folder_name = 'assets/images/equipodecomputo/' . $id . '/';
+        $id = $_POST['idimpresora'];
+        $folder_name = 'assets/images/impresora/' . $id . '/';
         if (!empty($_FILES)) {
             if (!file_exists($folder_name)) {
                 mkdir($folder_name);
@@ -199,10 +181,10 @@ class Equipodecomputo extends Controller
         }
     }
 
-    public function verGaleria($id_equipodecomputo)
+    public function verGaleria($id_impresora)
     {
         $result = array();
-        $directorio = 'assets/images/equipodecomputo/' . $id_equipodecomputo;
+        $directorio = 'assets/images/impresora/' . $id_impresora;
         if (file_exists($directorio)) {
             $imagenes = scandir($directorio);
             if (false !== $imagenes) {
@@ -221,7 +203,7 @@ class Equipodecomputo extends Controller
     {
         $datos = file_get_contents('php://input');
         $json = json_decode($datos, true);
-        $destino = 'assets/images/equipodecomputo/' . $json['url'];
+        $destino = 'assets/images/impresora/' . $json['url'];
         if (unlink($destino)) {
             $res = array('msg' => 'IMAGEN ELIMINADA', 'icono' => 'success');
         } else {

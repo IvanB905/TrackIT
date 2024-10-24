@@ -71,10 +71,10 @@ class EquipodecomputoModel extends Query
     }
 
     // Modificar equipo
-    public function modificar($Codigo_Inventario, $categoria, $Sede, $Area, $Marca, $Modelo, $Serial, $IP_Asignada, $MAC_Equipo, $Nombre_Equipo, $Sistema_Operativo, $Office_Licenciado, $Antivirus, $VPN, $destino, $id)
+    public function modificar($categoria, $Sede, $Area, $Marca, $Modelo, $Serial, $IP_Asignada, $MAC_Equipo, $Nombre_Equipo, $Sistema_Operativo, $Office_Licenciado, $Antivirus, $VPN, $destino, $id)
 {
-    $sql = "UPDATE equipo_de_computo SET Codigo_Inventario=?, id_categoria=?, id_sede=?, id_area=?, Marca=?, Modelo=?, Serial=?, IP_Asignada=?, MAC_Equipo=?, Nombre_Equipo=?, Sistema_Operativo=?, Office_Licenciado=?, Antivirus=?, VPN=?, imagen=? WHERE id=?";
-    $array = array($Codigo_Inventario, $categoria, $Sede, $Area, $Marca, $Modelo, $Serial, $IP_Asignada, $MAC_Equipo, $Nombre_Equipo, $Sistema_Operativo, $Office_Licenciado, $Antivirus, $VPN, $destino, $id);
+    $sql = "UPDATE equipo_de_computo SET id_categoria=?, id_sede=?, id_area=?, Marca=?, Modelo=?, Serial=?, IP_Asignada=?, MAC_Equipo=?, Nombre_Equipo=?, Sistema_Operativo=?, Office_Licenciado=?, Antivirus=?, VPN=?, imagen=? WHERE id=?";
+    $array = array($categoria, $Sede, $Area, $Marca, $Modelo, $Serial, $IP_Asignada, $MAC_Equipo, $Nombre_Equipo, $Sistema_Operativo, $Office_Licenciado, $Antivirus, $VPN, $destino, $id);
     return $this->save($sql, $array);
 }
 }
