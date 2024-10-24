@@ -79,7 +79,7 @@
                         </li>
                         <li> <a href="<?php echo BASE_URL . 'impresora'; ?>"><i class="bx bx-right-arrow-alt"></i>Impresora</a>
                         </li>
-                        <li> <a href="ecommerce-products.html"><i class="bx bx-right-arrow-alt"></i>Etiquetadora</a>
+                        <li> <a href="<?php echo BASE_URL . 'etiquetadora'; ?>"><i class="bx bx-right-arrow-alt"></i>Etiquetadora</a>
                         </li>
                         <li> <a href="ecommerce-products.html"><i class="bx bx-right-arrow-alt"></i>Perifericos</a>
                         </li>
