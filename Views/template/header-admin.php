@@ -83,7 +83,7 @@
                         </li>
                         <li> <a href="<?php echo BASE_URL . 'perifericos'; ?>"><i class="bx bx-right-arrow-alt"></i>Perifericos</a>
                         </li>
-                        <li> <a href="ecommerce-products.html"><i class="bx bx-right-arrow-alt"></i>CELULARES</a>
+                        <li> <a href="<?php echo BASE_URL . 'celulares'; ?>"><i class="bx bx-right-arrow-alt"></i>CELULARES</a>
                         </li>
                         <li> <a href="ecommerce-products-details.html"><i class="bx bx-right-arrow-alt"></i>TELEFONO IP</a>
                         </li>
